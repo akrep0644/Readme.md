@@ -1,0 +1,62 @@
+<?php
+$HtmlForm = <<< BLOK
+   
+<form name="login" method="post">
+
+            <table>
+                <tr>
+                    <td>Kullanıcı Adı</td>
+                    <td><input type="text" name="kullanici_adi" /></td>
+                </tr>
+                <tr>
+                    <td>Şifre</td>
+                    <td><input type="password" name="kullanici_sifre" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Giris" /></td>
+                </tr>
+            </table>
+
+        </form>
+BLOK;
+
+$YetkisizGiris= <<< BLOK
+
+   <div style="width:300px; height:100px; padding:50px; margin:50px auto; background-color:black; color:red; font-weight:20px;">Bu sayfayı görme yetkiniz yoktur</div>
+   
+BLOK;
+
+$YetkiliGiris= <<< BLOK
+
+   <div style="width:500px; height:100px; padding:50px; margin:50px auto; background-color:yellow; color:green; font-weight:20px;">flag:{b@5@rm@k_mut1u1uktur}</div>
+   
+BLOK;
+
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+
+        <?php
+        if (!empty($_POST)) {
+
+            if ($_POST['kullanici_adi'] == 'ayyildiztim' && $_POST['kullanici_sifre'] == 'ayt123') {
+                 $Mesaj=$YetkiliGiris;
+            } else {
+                $Mesaj=$YetkisizGiris;
+            }
+           
+        } else {
+            echo $HtmlForm;
+        }
+
+        echo $Mesaj;
+       
+        ?>
+
+    </body>
+</html>
